@@ -28,9 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "build/types/**/*.ts",
-    "main/main.js",
-    "main/preload.js"
+    "build/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

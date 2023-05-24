@@ -1,34 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) and Electron.js project that is used as a boiler plate for creating Electron apps using Next.js as the UI.
 
-## Getting Started
+## Information
 
-First, run the development server:
+The boilerplate uses the latest version of Next.js and the app directory feature
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- It uses the [Static Exports feature from Next.js](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports), so unfortunatly you cant use any feature that require dynamic data.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Using the boilerplate
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- run `npm run dev` to launch the electron app as a dev server, any files you change should automatically update.
+- run `npm run build` and after `npm start` to see how the electron app works in production
+- run `npm run package` to package the electron app into an executable.\
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Issues
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Currently I'm using the Static Export because I dont know how to launch the prod Next.js app when the executable is opened. Tried with `exec`, but that left the Next.js app running even after the executable was terminated
