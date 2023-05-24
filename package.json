@@ -4,14 +4,21 @@
   "private": true,
   "main": "public/main.js",
   "homepage": "./",
+  "description": "My Next.js project",
+  "author": "test",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start:next": "next start",
     "lint": "next lint",
-    "electron:serve": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"npm run electron:start\"",
+    "electron-dev": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"npm run electron:dev\"",
+    "electron-prod": "npm run build && concurrently -k \"cross-env BROWSER=none npm run start:next\" \"npm run electron\"",
     "electron:build": "yarn build && electron-builder -c.extraMetadata.main=build/main.js",
-    "electron:start": "wait-on tcp:3000 && electron ."
+    "electron:dev": "wait-on tcp:3000 && electron .",
+    "electron": "electron .",
+    "package": "electron-forge package",
+    "start": "electron-forge start",
+    "make": "electron-forge make"
   },
   "dependencies": {
     "@types/node": "20.2.3",
@@ -20,6 +27,7 @@
     "autoprefixer": "10.4.14",
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
+    "electron-squirrel-startup": "^1.0.0",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
     "next": "13.4.3",
@@ -31,6 +39,10 @@
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.1.1",
+    "@electron-forge/maker-deb": "^6.1.1",
+    "@electron-forge/maker-rpm": "^6.1.1",
+    "@electron-forge/maker-squirrel": "^6.1.1",
+    "@electron-forge/maker-zip": "^6.1.1",
     "electron": "^24.3.1",
     "typescript": "^5.0.4"
   }
