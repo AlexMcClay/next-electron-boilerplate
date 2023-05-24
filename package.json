@@ -2,7 +2,7 @@
   "name": "test-next-electron",
   "version": "0.1.0",
   "private": true,
-  "main": "main/main.js",
+  "main": "main/main.ts",
   "homepage": "./",
   "description": "My Next.js project",
   "author": "test",
@@ -21,6 +21,7 @@
     "make": "electron-forge make"
   },
   "dependencies": {
+    "@types/electron": "^1.6.10",
     "@types/node": "20.2.3",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",

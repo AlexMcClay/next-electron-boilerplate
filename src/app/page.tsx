@@ -6,9 +6,8 @@ import Image from "next/image";
 
 export default function Home() {
   function handleCLick() {
-    // window.electronAPI.setTitle("asd");
     window.electronAPI.setTitle("asd");
-    // alert("CLick");
+    console.log(window.electronAPI);
   }
 
   return (

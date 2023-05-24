@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 // Main File for Electron
 
 const { app, BrowserWindow, ipcMain } = require("electron");
@@ -22,11 +24,11 @@ console.log(process.env.NODE_ENV, isProd);
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 800,
     webPreferences: {
       enableRemoteModule: true,
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "preload.ts"),
     },
   });
 
