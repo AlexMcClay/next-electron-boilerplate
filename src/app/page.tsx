@@ -1,13 +1,12 @@
-//@ts-nocheck
-
 "use client";
 
 import Image from "next/image";
 
 export default function Home() {
   function handleCLick() {
-    window.electronAPI.setTitle("asd");
+    // window.electronAPI.setTitle("asd");
     console.log(window.electronAPI);
+    alert(window.electronAPI);
   }
 
   return (

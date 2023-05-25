@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 // Main File for Electron
 
 const { app, BrowserWindow, ipcMain } = require("electron");
@@ -9,7 +7,9 @@ const serve = require("electron-serve");
 function handleSetTitle(event, title) {
   const webContents = event.sender;
   const win = BrowserWindow.fromWebContents(webContents);
-  win.setTitle(title);
+  if (win !== null) {
+    win.setTitle(title);
+  }
 }
 
 // run renderer
@@ -20,24 +20,17 @@ if (isProd) {
   app.setPath("userData", `${app.getPath("userData")} (development)`);
 }
 
-console.log(process.env.NODE_ENV, isProd);
-
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 1200,
     height: 800,
     webPreferences: {
       enableRemoteModule: true,
-      preload: path.join(__dirname, "preload.ts"),
+      preload: path.join(__dirname, "preload.js"),
     },
   });
 
-  ipcMain.on("set-title", (event, title) => {
-    const webContents = event.sender;
-    const win = BrowserWindow.fromWebContents(webContents);
-    win.setTitle(title);
-  });
-
+  // Expose URL
   if (isProd) {
     win.loadURL("app://./home.html");
   } else {

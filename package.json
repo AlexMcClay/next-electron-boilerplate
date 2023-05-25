@@ -1,8 +1,8 @@
 {
-  "name": "test-next-electron",
+  "name": "electron-app",
   "version": "0.1.0",
   "private": true,
-  "main": "main/main.ts",
+  "main": "main/main.js",
   "homepage": "./",
   "description": "My Next.js project",
   "author": "test",
