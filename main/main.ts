@@ -18,7 +18,6 @@ const createSplashScreen = () => {
   /// create a browser window
   splash = new BrowserWindow(
     Object.assign({
-      /// define width and height for the window
       width: 200,
       height: 200,
       /// remove the window frame, so it will become a frameless window
