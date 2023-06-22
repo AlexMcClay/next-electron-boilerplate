@@ -15,6 +15,7 @@
 # production
 /build
 /main/out
+/main/tailwind.css
 
 # misc
 .DS_Store

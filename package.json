@@ -8,7 +8,7 @@
   "author": "test",
   "scripts": {
     "next:dev": "next dev",
-    "build:main": "tsc -p main",
+    "build:main": "tsc -p main && npx tailwindcss build --config tailwind.config.main.js -o ./main/tailwind.css",
     "start:next": "next start",
     "build": " npm run build:main && next build",
     "lint": "next lint",
