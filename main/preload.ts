@@ -4,6 +4,8 @@ const { contextBridge, ipcRenderer } = require("electron");
 //   setTitle: (title) => ipcRenderer.send("set-title", title),
 // };
 
-contextBridge.exposeInMainWorld("electronAPI", {
-  setTitle: (title) => ipcRenderer.send("set-title", title),
-});
+export const electronAPI = {
+  setTitle: (title: string) => ipcRenderer.send("set-title", title),
+};
+
+contextBridge.exposeInMainWorld("electronAPI", electronAPI);

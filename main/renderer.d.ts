@@ -1,8 +1,8 @@
-// import { electronAPI } from "./preload";
+import { electronAPI } from "./preload";
 
 declare global {
   interface Window {
-    electronAPI: typeof any;
+    electronAPI: typeof electronAPI;
   }
 }
 

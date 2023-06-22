@@ -4,7 +4,7 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const serve = require("electron-serve");
 
-function handleSetTitle(event, title) {
+function handleSetTitle(event: any, title: string) {
   const webContents = event.sender;
   const win = BrowserWindow.fromWebContents(webContents);
   if (win !== null) {
@@ -34,7 +34,7 @@ const createWindow = () => {
   if (isProd) {
     win.loadURL("app://./home.html");
   } else {
-    const port = process.argv[2];
+    // const port = process.argv[2];
     win.loadURL("http://localhost:3000/");
   }
 };
