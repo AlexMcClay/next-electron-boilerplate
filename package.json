@@ -8,7 +8,7 @@
   "author": "test",
   "scripts": {
     "next:dev": "next dev",
-    "build": "next build && npm run build:main",
+    "build": " npm run build:main && next build",
     "build:main": "rimraf main/out & tsc -p main",
     "start:next": "next start",
     "lint": "next lint",
