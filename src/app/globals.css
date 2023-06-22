@@ -20,6 +20,10 @@ body {
   color: rgb(var(--foreground-rgb));
   min-width: 100vw;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  overflow-x: hidden;
   background: linear-gradient(
       to bottom,
       transparent,

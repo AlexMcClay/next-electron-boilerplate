@@ -43,7 +43,7 @@ export default function RootLayout({
             Second
           </Link>
         </div>
-        <div className=" pt-1">{children}</div>
+        {children}
       </body>
     </html>
   );
