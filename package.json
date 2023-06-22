@@ -13,7 +13,7 @@
     "start:next": "next start",
     "lint": "next lint",
     "serve": "npx serve@latest build",
-    "dev": "cross-env NODE_ENV=development npm run build:main && concurrently -k \"cross-env BROWSER=none npm run next:dev\" \"npm run electron:dev\"",
+    "dev": "npm run build:main && cross-env NODE_ENV=development concurrently -k \"cross-env BROWSER=none npm run next:dev\" \"npm run electron:dev\"",
     "start": "cross-env npm run electron",
     "electron:dev": "wait-on tcp:3000 && electron .",
     "electron": "electron .",
