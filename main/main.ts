@@ -1,6 +1,6 @@
 // Main File for Electron
 
-const { app, BrowserWindow, ipcMain } = require("electron");
+import { app, BrowserWindow, ipcMain } from "electron";
 const path = require("path");
 const serve = require("electron-serve");
 
@@ -25,7 +25,6 @@ const createWindow = () => {
     width: 1200,
     height: 800,
     webPreferences: {
-      enableRemoteModule: true,
       preload: path.join(__dirname, "preload.js"),
     },
   });

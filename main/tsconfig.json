@@ -19,6 +19,7 @@
     "target": "esnext",
     "outDir": "./out"
   },
-  "exclude": ["node_modules"],
+  "compileOnSave": true,
+  "exclude": ["node_modules", "./out/**/*"],
   "include": ["**/*.ts", "**/*.tsx", "**/*.js"]
 }
