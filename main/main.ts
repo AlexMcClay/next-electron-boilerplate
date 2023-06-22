@@ -12,6 +12,32 @@ function handleSetTitle(event: any, title: string) {
   }
 }
 
+// Loading Screen
+let splash: BrowserWindow | null;
+const createSplashScreen = () => {
+  /// create a browser window
+  splash = new BrowserWindow(
+    Object.assign({
+      /// define width and height for the window
+      width: 200,
+      height: 200,
+      /// remove the window frame, so it will become a frameless window
+      frame: false,
+      /// and set the transparency, to remove any window background color
+      transparent: true,
+    })
+  );
+  splash.setResizable(false);
+  console.log(__dirname);
+  splash.loadURL("file://" + __dirname + "/../splash/index.html");
+  splash.on("closed", () => (splash = null));
+  splash.webContents.on("did-finish-load", () => {
+    if (splash) {
+      splash.show();
+    }
+  });
+};
+
 // run renderer
 const isProd = process.env.NODE_ENV !== "development";
 if (isProd) {
@@ -27,6 +53,7 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
+    show: false,
   });
 
   // Expose URL
@@ -36,12 +63,25 @@ const createWindow = () => {
     // const port = process.argv[2];
     win.loadURL("http://localhost:3000/");
   }
+
+  win.webContents.on("did-finish-load", () => {
+    /// then close the loading screen window and show the main window
+    if (splash) {
+      splash.close();
+    }
+    win.show();
+  });
 };
 
 app.whenReady().then(() => {
   ipcMain.on("set-title", handleSetTitle);
 
-  createWindow();
+  createSplashScreen();
+
+  // createWindow();
+  setTimeout(() => {
+    createWindow();
+  }, 2000);
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
