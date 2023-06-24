@@ -28,3 +28,9 @@ The `/src` directory hosts the renderer which is a Next.js 13. You can use Tailw
 
 - Currently I'm using the Static Export because I dont know how to launch the prod Next.js app when the executable is opened. Tried with `exec`, but that left the Next.js app running even after the executable was terminated.
 - The `main` app for electron has to be restarted every time there are changed done there, I'll try in the future to implement Hot-Reload soonish in the future.
+
+# Outputed files after Build.
+
+- `/.next` and `/out` contains the Next.js renderer
+- `/main/out` contains the compiled typescript to javascript files for the main thread.
+- `/dist` contains the final packaged Electron app.
