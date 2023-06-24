@@ -10,7 +10,7 @@ The boilerplate uses the latest version of Next.js and the app directory feature
 
 Everything regarding the main thread is in the `main` directory, which is written in typescript.
 
-- The Typescript files are compuled to `/main/out`, where `/main/out/main.js` is the main file that is run
+- The Typescript files are compiled to `/main/out`, where `/main/out/main.js` is the main file that is run
 - The is a slash screen, similar to the Discord app, where that is shown until the renderer is fully loaded.
 - Any html files inside `/main` can use Tailwind classes.
 
