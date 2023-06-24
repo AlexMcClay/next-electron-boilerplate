@@ -14,7 +14,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-between p-24 flex-grow">
+    <main className="flex flex-col items-center justify-around p-24 flex-grow">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p
           onClick={() => handleCLick()}
@@ -35,8 +35,6 @@ export default function Home() {
           priority
         />
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left"></div>
     </main>
   );
 }
