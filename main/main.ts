@@ -19,11 +19,9 @@ const createSplashScreen = () => {
   splash = new BrowserWindow(
     Object.assign({
       width: 200,
-      height: 200,
+      height: 100,
       /// remove the window frame, so it will become a frameless window
       frame: false,
-      /// and set the transparency, to remove any window background color
-      transparent: true,
     })
   );
   splash.setResizable(false);
