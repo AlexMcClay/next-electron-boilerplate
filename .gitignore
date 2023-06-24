@@ -16,6 +16,7 @@
 /build
 /main/out
 /main/tailwind.css
+/dist
 
 # misc
 .DS_Store

@@ -1,5 +1,6 @@
 {
   "name": "electron-app",
+  "productName": "Electron App",
   "version": "0.1.0",
   "private": true,
   "main": "main/out/main.js",
@@ -17,9 +18,8 @@
     "next:lint": "next lint",
     "electron:dev": "npm run build:main && wait-on tcp:3000 && electron .",
     "electron": "electron .",
-    "package": "npm run build && electron-forge package",
-    "start:forge": "electron-forge start",
-    "make": "electron-forge make"
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder"
   },
   "dependencies": {
     "@types/electron": "^1.6.10",
@@ -41,12 +41,27 @@
     "wait-on": "^7.0.1"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.1.1",
-    "@electron-forge/maker-deb": "^6.1.1",
-    "@electron-forge/maker-rpm": "^6.1.1",
-    "@electron-forge/maker-squirrel": "^6.1.1",
-    "@electron-forge/maker-zip": "^6.1.1",
     "electron": "^24.3.1",
+    "electron-builder": "^24.4.0",
     "typescript": "^5.0.4"
+  },
+  "build": {
+    "appId": "Electron-app",
+    "productName": "Electron App",
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "uninstallDisplayName": "Electron App",
+      "license": "license.md"
+    },
+    "mac": {
+      "category": "your.app.category.type"
+    }
   }
 }

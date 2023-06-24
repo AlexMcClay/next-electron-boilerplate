@@ -40,7 +40,7 @@ const createSplashScreen = () => {
 // run renderer
 const isProd = process.env.NODE_ENV !== "development";
 if (isProd) {
-  serve({ directory: "build" });
+  serve({ directory: "out" });
 } else {
   app.setPath("userData", `${app.getPath("userData")} (development)`);
 }
@@ -49,6 +49,7 @@ const createWindow = () => {
   const win = new BrowserWindow({
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      devTools: !isProd,
     },
     show: false,
   });
