@@ -61,7 +61,13 @@
       "license": "license.md"
     },
     "mac": {
-      "category": "your.app.category.type"
+      "category": "your.app.category.type",
+      "target": [
+        "dmg"
+      ]
+    },
+    "dmg": {
+      "title": "OCT App Installer"
     }
   }
 }
