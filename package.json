@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "pnpm run --parallel dev",
-    "build": "cd packages/renderer && pnpm run build && cd ../../packages/main && pnpm run build",
-    "start": "cd packages/main && pnpm run start",
-    "pack": "cd packages/renderer && pnpm run build && cd ../../packages/main && pnpm run pack"
+    "build": "cd packages/renderer && npm run build && cd ../../packages/main && npm run build",
+    "start": "cd packages/main && npm run start",
+    "pack": "cd packages/renderer && npm run build && cd ../../packages/main && npm run pack"
   },
   "keywords": [],
   "author": "",

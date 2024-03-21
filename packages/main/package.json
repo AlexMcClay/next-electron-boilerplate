@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
-    "chokidar": "^3.6.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
@@ -46,11 +45,6 @@
     "directories": {
       "output": "../../dist"
     },
-    "files": [
-      "../renderer/out/**/*",
-      "out/**/*",
-      "package.json"
-    ],
     "win": {
       "target": [
         "nsis"

@@ -3,6 +3,7 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
 import serve from "electron-serve";
+import fs from "fs";
 
 import { replaceTscAliasPaths } from "tsc-alias";
 // import { utilsTest } from "@utils/index";
@@ -29,6 +30,24 @@ function handleSetTitle(event: any, title: string) {
   if (win !== null) {
     win.setTitle(output);
   }
+}
+
+if (app.isPackaged) {
+  // create log file with current date
+  const documentsPath = app.getPath("documents");
+  const logPath = path.join(documentsPath, "electron-app", "logs");
+  if (!fs.existsSync(logPath)) {
+    // make dir recursively
+    fs.mkdirSync(logPath, { recursive: true });
+  }
+
+  const date = new Date();
+  const dateString = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
+  const logFilePath = path.join(logPath, `log-${dateString}.txt`);
+  const logFile = fs.createWriteStream(logFilePath, { flags: "a" });
+  process.stdout._write = function (chunk, encoding, callback) {
+    logFile.write(chunk, encoding, callback);
+  };
 }
 
 // Loading Screen
