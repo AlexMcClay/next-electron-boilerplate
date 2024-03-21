@@ -20,16 +20,16 @@
     "outDir": "./out",
     "baseUrl": "./",
     "paths": {
-      "@utils/*": ["./utils/*"],
-      "@splash/*": ["./splash/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@splash/*": ["./src/splash/*"]
     }
   },
   "tsc-alias": {
     "verbose": false,
     "resolveFullPaths": true,
     "replacers": {
-      "@utils": "./utils",
-      "@splash": "./splash"
+      "@utils": "./src/utils",
+      "@splash": "./src/splash"
     },
     "fileExtensions": {
       "inputGlob": "{js,jsx,mjs}",
