@@ -17,7 +17,24 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "outDir": "./out"
+    "outDir": "./out",
+    "baseUrl": "./",
+    "paths": {
+      "@utils/*": ["./utils/*"],
+      "@splash/*": ["./splash/*"]
+    }
+  },
+  "tsc-alias": {
+    "verbose": false,
+    "resolveFullPaths": true,
+    "replacers": {
+      "@utils": "./utils",
+      "@splash": "./splash"
+    },
+    "fileExtensions": {
+      "inputGlob": "{js,jsx,mjs}",
+      "outputCheck": ["js", "json", "jsx", "mjs"]
+    }
   },
   "compileOnSave": true,
   "exclude": ["node_modules", "./out/**/*"],

@@ -4,6 +4,10 @@ import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
 import serve from "electron-serve";
 
+import { replaceTscAliasPaths } from "tsc-alias";
+import { utilsTest } from "@utils/index";
+replaceTscAliasPaths();
+
 require("dotenv").config({
   path: app.isPackaged
     ? path.join(process.resourcesPath, ".env")
@@ -80,6 +84,8 @@ app.whenReady().then(() => {
   ipcMain.on("set-title", handleSetTitle);
 
   createSplashScreen();
+
+  console.log(utilsTest || "ERROR");
 
   // createWindow();
   setTimeout(() => {
