@@ -5,7 +5,7 @@ import path from "path";
 import serve from "electron-serve";
 
 import { replaceTscAliasPaths } from "tsc-alias";
-import { utilsTest } from "@utils/index";
+// import { utilsTest } from "@utils/index";
 replaceTscAliasPaths();
 
 const envPath = app.isPackaged
@@ -18,11 +18,16 @@ require("dotenv").config({
   path: envPath,
 });
 
+import { handleTest } from "./ipcMain/test";
+import { TrayManager } from "./tray";
+
 function handleSetTitle(event: any, title: string) {
   const webContents = event.sender;
+  const output = title;
+  console.log("Output", output);
   const win = BrowserWindow.fromWebContents(webContents);
   if (win !== null) {
-    win.setTitle(title);
+    win.setTitle(output);
   }
 }
 
@@ -92,8 +97,12 @@ app.whenReady().then(() => {
   ipcMain.on("set-title", handleSetTitle);
 
   createSplashScreen();
+  handleTest();
 
-  console.log(utilsTest || "ERROR");
+  const trayManager = new TrayManager();
+  trayManager.dummy();
+
+  // console.log(utilsTest || "ERROR");
   console.log("NODE_ENV", process.env.NODE_ENV);
 
   // createWindow();

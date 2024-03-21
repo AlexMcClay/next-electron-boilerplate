@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "pnpm run --parallel dev"
+    "dev": "pnpm run --parallel dev",
+    "build": "cd packages/renderer && pnpm run build && cd ../../packages/main && pnpm run build",
+    "start": "cd packages/main && pnpm run start",
+    "pack": "cd packages/renderer && pnpm run build && cd ../../packages/main && pnpm run pack"
   },
   "keywords": [],
   "author": "",

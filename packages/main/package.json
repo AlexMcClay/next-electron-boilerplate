@@ -8,21 +8,22 @@
   "description": "An Electron app with Next.js and Tailwind CSS",
   "author": "test",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development npm run build:main && wait-on tcp:3000 && electron .",
+    "dev": "tsc && (concurrently -k \"tsc-alias -w -p tsconfig.json\"  \"electron .\")",
     "build": " npm run build:main",
-    "start": "cross-env npm run electron",
+    "start": "cross-env NODE_ENV=production electron .",
     "build:tailwindMain": "npx tailwindcss build --config tailwind.config.js -o ./src/tailwind.css",
-    "build:main": "cross-env NODE_ENV=development tsc && tsc-alias -p tsconfig.json && npm run build:tailwindMain",
-    "electron": "electron .",
+    "build:main": "tsc && tsc-alias -p tsconfig.json",
     "pack": "npm run build && electron-builder --dir",
     "dist": "npm run build && electron-builder",
     "builder": "electron-builder --dir"
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
+    "chokidar": "^3.6.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
+    "electron-reload": "2.0.0-alpha.1",
     "electron-serve": "^1.3.0",
     "electron-squirrel-startup": "^1.0.0",
     "eslint": "^8.57.0",
@@ -42,6 +43,14 @@
   "build": {
     "appId": "Electron-app",
     "productName": "Electron App",
+    "directories": {
+      "output": "../../dist"
+    },
+    "files": [
+      "../renderer/out/**/*",
+      "out/**/*",
+      "package.json"
+    ],
     "win": {
       "target": [
         "nsis"
