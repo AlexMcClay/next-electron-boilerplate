@@ -12,17 +12,17 @@
 /.next/
 /out/
 
-.env*
+.env
 
 # production
 /build
-/main/out
-/main/tailwind.css
+/out
+/src/tailwind.css
 /dist
 
 # misc
 .DS_Store
-*.pem
+*.pem 
 
 # debug
 npm-debug.log*

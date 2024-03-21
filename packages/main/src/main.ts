@@ -8,10 +8,14 @@ import { replaceTscAliasPaths } from "tsc-alias";
 import { utilsTest } from "@utils/index";
 replaceTscAliasPaths();
 
+const envPath = app.isPackaged
+  ? path.join(process.resourcesPath, "../../", ".env.prod")
+  : path.resolve(process.cwd(), "../../", ".env.dev");
+
+console.log("ENV PATH", envPath);
+
 require("dotenv").config({
-  path: app.isPackaged
-    ? path.join(process.resourcesPath, ".env")
-    : path.resolve(process.cwd(), ".env"),
+  path: envPath,
 });
 
 function handleSetTitle(event: any, title: string) {
@@ -35,8 +39,9 @@ const createSplashScreen = () => {
     })
   );
   splash.setResizable(false);
-  console.log(__dirname);
-  splash.loadURL("file://" + __dirname + "/../splash/index.html");
+  const loadingPath = path.join(__dirname, "../../src/splash/index.html");
+  // console.log("Loading Path", loadingPath);
+  splash.loadURL("file://" + loadingPath);
   splash.on("closed", () => (splash = null));
   splash.webContents.on("did-finish-load", () => {
     if (splash) {
@@ -47,8 +52,11 @@ const createSplashScreen = () => {
 
 // run renderer
 const isProd = process.env.NODE_ENV !== "development";
+
 if (isProd) {
-  serve({ directory: "renderer/out" });
+  const prodPath = path.join(__dirname, "../../../renderer/out");
+  console.log("Prod Path", prodPath);
+  serve({ directory: prodPath });
 } else {
   app.setPath("userData", `${app.getPath("userData")} (development)`);
 }
@@ -86,6 +94,7 @@ app.whenReady().then(() => {
   createSplashScreen();
 
   console.log(utilsTest || "ERROR");
+  console.log("NODE_ENV", process.env.NODE_ENV);
 
   // createWindow();
   setTimeout(() => {

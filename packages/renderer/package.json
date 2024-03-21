@@ -8,10 +8,10 @@
   "description": "This is a test description",
   "author": "Alex McClay",
   "scripts": {
-    "next:dev": "next dev",
-    "next:build": "next build",
+    "dev": "next dev",
+    "build": "next build",
     "lint": "next lint",
-    "next:serve": "serve out"
+    "serve": "serve out"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
