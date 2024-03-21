@@ -1,8 +1,14 @@
 // Main File for Electron
 
 import { app, BrowserWindow, ipcMain } from "electron";
-const path = require("path");
-const serve = require("electron-serve");
+import path from "path";
+import serve from "electron-serve";
+
+require("dotenv").config({
+  path: app.isPackaged
+    ? path.join(process.resourcesPath, ".env")
+    : path.resolve(process.cwd(), ".env"),
+});
 
 function handleSetTitle(event: any, title: string) {
   const webContents = event.sender;
@@ -38,7 +44,7 @@ const createSplashScreen = () => {
 // run renderer
 const isProd = process.env.NODE_ENV !== "development";
 if (isProd) {
-  serve({ directory: "out" });
+  serve({ directory: "renderer/out" });
 } else {
   app.setPath("userData", `${app.getPath("userData")} (development)`);
 }
